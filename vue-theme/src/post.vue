@@ -5,8 +5,8 @@
 <template>
     <div class="flex items-center justify-center bg-white rounded-small mt-10 mb-10 shadow-xl">
         <div class="w-full">
-            <a v-if="post._embedded['wp:featuredmedia'][0].media_details.sizes['full']" v-link="{ path: base_path + post.slug }">
-                <img class="w-full" :src="post._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url" />
+            <a v-if="post._embedded['wp:featuredmedia'][0].media_details.sizes['full']" v-link="{ path: base_path + post.slug }" title="{{ post.title.rendered }}">
+                <img class="w-full" :src="post._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url" alt="{{ post.title.rendered }}" title="{{ post.title.rendered }}" />
             </a>
 
             <div class="entry-box p-32 pb-18 pt-12">
@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="flex items-center justify-center">
-                    <a v-link="{ path: base_path + post.slug }" class="bg-indigo-800 text-white font-bold rounded-lg border shadow-lg p-4 mt-10" v-if="!isSingle">
+                    <a title="Read More" v-link="{ path: base_path + post.slug }" class="bg-gray-900 text-white font-bold rounded-lg border shadow-lg p-6 mt-4 hover:bg-gray-400 pt-2 pb-2" v-if="!isSingle">
 		                Read More
 	                </a>
                 </div>
