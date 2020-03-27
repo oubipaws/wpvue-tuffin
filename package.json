@@ -2,11 +2,15 @@
   "private": true,
   "scripts": {
     "dev": "watchify -vd -p browserify-hmr -e vue-theme/src/main.js -o vue-theme/dist/build.js",
-    "build": "cross-env NODE_ENV=production browserify vue-theme/src/main.js | uglifyjs -c warnings=false -m > vue-theme/dist/build.js"
+    "build": "cross-env NODE_ENV=production browserify vue-theme/src/main.js | uglifyjs -c warnings=false -m > vue-theme/dist/build.js",
+    "css": "npx tailwindcss build style.css -o assets/css/dist.css"
   },
   "dependencies": {
     "normalize.css": "^3.0.3",
+    "tailwindcss": "^1.2.0",
     "vue": "^1.0.0",
+    "vue-meta": "^2.3.3",
+    "vue-moment": "^4.1.0",
     "vue-resource": "^0.7.0",
     "vue-router": "^0.7.10"
   },

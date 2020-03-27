@@ -33,11 +33,15 @@ function tuffin_api_register() {
 function toffin_api_options_callback() {
 	global $tuffin_options;
 
-	$site_options = array();
-	foreach($tuffin_options as $key => $val){
-		foreach($val as $to_single){
-			$site_options[$key][$to_single['Name']] = get_option($to_single['Name']);
+	$site_options = get_transient( 'tuffin_site_options' );
+	if ( false === $site_options ) {
+		$site_options = array();
+		foreach($tuffin_options as $key => $val){
+			foreach($val as $to_single){
+				$site_options[$key][$to_single['Name']] = get_option($to_single['Name']);
+			}
 		}
+		set_transient( 'tuffin_site_options', $site_options, 86400  );
 	}
 
 	return $site_options;
@@ -48,9 +52,8 @@ function enqueue_js_and_css() {
 	$base_path = rtrim( parse_url( $base_url, PHP_URL_PATH ), '/' );
 	
 	if(!is_admin()){
-		wp_enqueue_style( 'tuffin_tailwind', 'https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css',false,'','all');
-		wp_enqueue_style( 'tuffin_base', get_stylesheet_uri() );
-
+		wp_enqueue_style( 'tuffin_css', get_template_directory_uri() . "/assets/css/dist.css", false, '', 'all');
+		
 		wp_enqueue_script( 'rest-theme-vue', get_template_directory_uri() . '/vue-theme/dist/build.js', array(), '1.0.0', true );
 		wp_localize_script( 'rest-theme-vue', 'wp', array(
 			'root'      => esc_url_raw( rest_url() ),

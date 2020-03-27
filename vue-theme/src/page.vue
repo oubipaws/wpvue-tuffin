@@ -10,7 +10,7 @@
                     <h1 class="entry-title single font-sans font-thin text-black text-4xl">{{ page.title.rendered }}</h1>
                 </div>
                 
-                <div class="entry-content">
+                <div class="entry-content" v-html="page.content.rendered">
                     {{ page.content.rendered }}
                 </div>
             </div>
