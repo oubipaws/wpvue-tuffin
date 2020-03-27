@@ -21,11 +21,6 @@ Copy `.env.example` to `.env` and configure the following settings/options:
 
 ### Versions & Changes
 
-#### v1.2.1
-- NPM Package Fix: ecstatic (>=2.2.2)
-- NPM Package Fix: js-yaml (>=3.13.1)
-- NPM Package Fix: clean-css (>=4.1.11)
-
 #### v1.2.0
 - Basic Pagination Setup
 - Basic Temporary Screenshot
